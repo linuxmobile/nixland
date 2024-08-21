@@ -30,52 +30,34 @@ in {
     biome
     vue-language-server
     vscode-langservers-extracted
-    nil
+    nixd
     zedNodeFixScript
+    typescript-language-server
   ];
 
   home.file.".config/zed/settings.json".text = jsonGenerator {
-    theme = {
-      mode = "system";
-      dark = "Catbox Dark";
-      light = "Catbox Latte";
+    assistant = {
+      default_model = {
+        model = "gpt-4";
+        provider = "copilot_chat";
+      };
+      default_open_ai_model = null;
+      version = "2";
     };
-    project_panel = {
-      dock = "left";
+    auto_install_extensions = {
+      astro = true;
+      biome = true;
+      html = true;
+      nix = true;
+      unocss = true;
+      vue = true;
     };
-    ui_font_size = 16;
-    buffer_font_size = 14;
-    server_url = "https://disable-stupid-crap.zed.invalid";
     auto_update = false;
-    scrollbar = {
-      show = "never";
-    };
-    tab_bar = {
-      show = false;
-    };
-    toolbar = {
-      breadcrumbs = true;
-      quick_actions = false;
-    };
-    tab_size = 2;
-    inlay_hints = {
-      enabled = true;
-    };
-    journal = {
-      hour_format = "hour24";
-    };
-    telemetry = {
-      diagnostics = false;
-      metrics = false;
-    };
+    buffer_font_size = 14;
     calls = {
       mute_on_join = true;
       share_on_join = true;
     };
-    terminal = {
-      font_family = "ZedMono Nerd Font";
-    };
-    vim_mode = true;
     format_on_save = "on";
     formatter = {
       external = {
@@ -83,6 +65,44 @@ in {
         arguments = ["format" "--write" "--stdin-file-path" "{buffer_path}"];
       };
     };
+    inlay_hints = {
+      enabled = true;
+    };
+    journal = {
+      hour_format = "hour24";
+    };
+
+    project_panel = {
+      dock = "right";
+      scrollbar = {
+        show = "never";
+      };
+    };
+    scrollbar = {
+      show = "never";
+    };
+    tab_bar = {
+      show = false;
+    };
+    tab_size = 2;
+    telemetry = {
+      diagnostics = false;
+      metrics = false;
+    };
+    terminal = {
+      font_family = "ZedMono Nerd Font";
+    };
+    theme = {
+      mode = "system";
+      dark = "Catbox Dark";
+      light = "Catbox Latte";
+    };
+    toolbar = {
+      breadcrumbs = true;
+      quick_actions = false;
+    };
+    ui_font_size = 16;
+    vim_mode = true;
     lsp = {
       biome = {
         settings = {
@@ -113,64 +133,17 @@ in {
         command = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
         args = ["--stdio"];
       };
-      nil = {
-        command = "${pkgs.nil}/bin/nil";
+      nixd = {
+        command = "${pkgs.nixd}/bin/nixd";
         args = ["--stdio"];
       };
       vue-language-server = {
         command = "${pkgs.vue-language-server}/bin/vue-language-server";
         args = ["--stdio"];
       };
-    };
-    assistant = {
-      enabled = true;
-      provider = {
-        available_models = [
-          {
-            custom = {
-              name = "llama-3.1-70b-versatile";
-              max_tokens = 8000;
-            };
-          }
-          {
-            custom = {
-              name = "llama3-70b-8192";
-              max_tokens = 32000;
-            };
-          }
-          {
-            custom = {
-              name = "llama3-70b-8192";
-              max_tokens = 64000;
-            };
-          }
-          {
-            custom = {
-              name = "openai/gpt-4o";
-              max_tokens = 128000;
-            };
-          }
-          {
-            custom = {
-              name = "google/gemini-flash-1.5";
-              max_tokens = 2000000;
-            };
-          }
-          {
-            custom = {
-              name = "deepseek/deepseek-coder";
-              max_tokens = 32000;
-            };
-          }
-        ];
-        api_url = "https://openrouter.ai/api/v1";
-        name = "openai";
-        default_model = {
-          custom = {
-            name = "openai/gpt-4o";
-            max_tokens = 128000;
-          };
-        };
+      typescript-language-server = {
+        command = "${pkgs.typescript-language-server}/bin/typescript-language-server";
+        args = ["--stdio"];
       };
     };
   };

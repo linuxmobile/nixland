@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   ...
 }: {
   home.packages = [pkgs.gh];
@@ -18,10 +17,9 @@
       signByDefault = true;
     };
 
-    delta = {
-      enable = true;
-      options.${config.theme.name} = true;
-    };
+    # delta = {
+    #   enable = true;
+    # };
 
     extraConfig = {
       init.defaultBranch = "main";
