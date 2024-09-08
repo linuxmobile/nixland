@@ -2,7 +2,7 @@
   imports = [
     # editors
     ../../editors/helix
-    ../../editors/vscode
+    # ../../editors/vscode
     ../../editors/zed
 
     # services

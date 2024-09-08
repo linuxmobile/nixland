@@ -14,7 +14,6 @@
     # messaging
     tdesktop
     vesktop
-    dorion
 
     # misc
     ps_mem
@@ -33,28 +32,27 @@
     dconf-editor
     file-roller
     nautilus
-    gnome-text-editor
-    amberol
-    blanket
-    cavalier
+    # amberol
+    # blanket
+    # cavalier
     celluloid
-    contrast
-    eyedropper
-    gnome-solanum
-    keypunch
+    # contrast
+    # eyedropper
+    # gnome-solanum
+    # keypunch
     kooha
     loupe
     overskride
-    paleta
-    paper-plane
+    # paleta
+    # paper-plane
     papers
-    parabolic
-    planify
+    # parabolic
+    # planify
     pwvucontrol
     resources
 
     inkscape
-    gimp
+    # gimp
     scrcpy
   ];
 }

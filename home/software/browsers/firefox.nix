@@ -68,20 +68,28 @@
           urls = [{template = "https://github.com/search?q={searchTerms}&type=code";}];
           definedAliases = ["@gc"];
         };
+        "GitHub Issues" = {
+          urls = [{template = "https://github.com/search?q={searchTerms}&type=issues";}];
+          definedAliases = ["@gi"];
+        };
 
         "NPM" = {
           urls = [{template = "https://www.npmjs.com/search?q={searchTerms}";}];
           definedAliases = ["@npm"];
         };
-
-        "GitHub Pulls" = {
-          urls = [{template = "https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+is%3Aopen+{searchTerms}";}];
-          definedAliases = ["@gp"];
+        "Pkg Size" = {
+          urls = [{template = "https://pkg-size.dev/{searchTerms}";}];
+          definedAliases = ["@pkg"];
         };
 
-        "GitHub Issues" = {
+        "Nixpkgs Pulls" = {
+          urls = [{template = "https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+is%3Aopen+{searchTerms}";}];
+          definedAliases = ["@npp"];
+        };
+
+        "Nixpkgs Issues" = {
           urls = [{template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue+{searchTerms}";}];
-          definedAliases = ["@gi"];
+          definedAliases = ["@npi"];
         };
         Bing.metaData.hidden = true;
         "Amazon.com".metaData.hidden = true;
