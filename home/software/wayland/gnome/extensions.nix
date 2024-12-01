@@ -1,9 +1,12 @@
 {pkgs, ...}: let
   defaultExtensions = with pkgs.gnomeExtensions; [
     appindicator
+    battery-time-2
     blur-my-shell
     dash-to-dock
+    tiling-shell
     user-themes
+    light-style
   ];
 in {
   home.packages = with pkgs;

@@ -3,7 +3,7 @@ let
     ./core/boot.nix
     ./core/default.nix
 
-    ./hardware/opengl.nix
+    ./hardware/graphics.nix
     ./hardware/fwupd.nix
 
     ./network/default.nix
@@ -17,7 +17,6 @@ let
   laptop =
     desktop
     ++ [
-      ./network/avahi.nix
       ./hardware/bluetooth.nix
 
       ./services/power.nix

@@ -23,8 +23,10 @@
     };
   };
 
+  console.keyMap = "la-latin1";
+
   # don't touch this
-  system.stateVersion = lib.mkDefault "23.11";
+  system.stateVersion = lib.mkDefault "24.05";
 
   time.timeZone = lib.mkDefault "America/Argentina/Buenos_Aires";
   time.hardwareClockInLocalTime = lib.mkDefault true;

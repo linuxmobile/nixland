@@ -1,25 +1,23 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
-    ./browsers/brave.nix
+    ./browsers/chromium.nix
     ./browsers/edge.nix
-    ./browsers/firefox.nix
-    ./browsers/qutebrowser.nix
+    ./browsers/zen.nix
     ./gtk.nix
     ./media
-    ./tools/vencord.nix
   ];
 
   home.packages = with pkgs; [
     # messaging
     tdesktop
+    vesktop
 
     ps_mem
-
-    vesktop
+    nitch
+    maxfetch
 
     # misc
     pciutils

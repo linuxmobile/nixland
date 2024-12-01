@@ -2,7 +2,7 @@
   imports = [
     ./bat.nix
     ./bottom.nix
-    ./cava.nix
+    # ./cava.nix
     ./cli.nix
     ./gpg.nix
     ./git.nix

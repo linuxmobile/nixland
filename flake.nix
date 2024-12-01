@@ -10,7 +10,6 @@
       perSystem = {
         config,
         pkgs,
-        system,
         ...
       }: {
         devShells = {
@@ -79,14 +78,8 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
-    spicetify-nix = {
-      url = "github:MichaelPachec0/spicetify-nix";
+    zen-browser = {
+      url = "github:fufexan/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

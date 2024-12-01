@@ -14,7 +14,7 @@
   home = {
     username = "linuxmobile";
     homeDirectory = "/home/linuxmobile";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     extraOutputsToInstall = ["doc" "devdoc"];
   };
 

@@ -14,11 +14,11 @@
 
     systemPackages = with pkgs; [
       ffmpegthumbnailer
-      gnome.adwaita-icon-theme
-      gnome.dconf-editor
-      gnome.gnome-themes-extra
-      gnome.gnome-tweaks
-      gnome.nautilus-python
+      adwaita-icon-theme
+      dconf-editor
+      gnome-themes-extra
+      gnome-tweaks
+      nautilus-python
       nautilus-open-any-terminal
       wl-clipboard
     ];
@@ -32,14 +32,14 @@
         gnome-tour
         nano
         snapshot
-      ])
-      ++ (with pkgs.gnome; [
         cheese # webcam tool
-        eog
-        gnome-music
         epiphany # web browser
         geary # email reader
         evince # document viewer
+      ])
+      ++ (with pkgs; [
+        eog
+        gnome-music
         gnome-characters
         totem # video player
         tali # poker game
@@ -53,7 +53,6 @@
         gnome-shell-extensions
         gnome-maps
         gnome-font-viewer
-        gnome-online-miners
       ]);
   };
 
@@ -70,7 +69,7 @@
 
   xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gnome];
 
-  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+  services.udev.packages = with pkgs; [gnome-settings-daemon];
 
   programs.dconf.profiles = {
     gdm.databases = [

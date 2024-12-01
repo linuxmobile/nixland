@@ -8,7 +8,7 @@
     packages = with pkgs; [
       amberol
       blanket
-      cavalier
+      # cavalier
       celluloid
       contrast
       eyedropper
@@ -16,6 +16,7 @@
       keypunch
       kooha
       loupe
+      muzika
       overskride
       paleta
       paper-plane

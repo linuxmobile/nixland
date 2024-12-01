@@ -7,18 +7,19 @@
     packages = with pkgs; [
       # icon fonts
       material-symbols
+
       # normal fonts
+      libertinus
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       roboto
-
-      maple-mono-SC-NF
 
       inputs.self.packages.${pkgs.system}.SF-Pro
 
       # nerdfonts
-      (nerdfonts.override {fonts = ["GeistMono" "ZedMono" "NerdFontsSymbolsOnly"];})
+      nerd-fonts.zed-mono
+      nerd-fonts.symbols-only
     ];
 
     # causes more issues than it solves
@@ -27,6 +28,7 @@
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
+    #
     fontconfig = {
       enable = true;
       antialias = true;
@@ -39,12 +41,15 @@
         lcdfilter = "default";
         rgba = "rgb";
       };
-      defaultFonts = {
-        serif = ["SF Pro Text" "Noto Color Emoji"];
-        sansSerif = ["SF Pro DIsplay" "Noto Color Emoji"];
-        monospace = ["GeistMono Nerd Font" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
-      };
+      defaultFonts = let
+        addAll = builtins.mapAttrs (_: v: ["Symbols Nerd Font"] ++ v ++ ["Noto Color Emoji"]);
+      in
+        addAll {
+          serif = ["Libertinus Serif"];
+          sansSerif = ["SF Pro Rounded"];
+          monospace = ["ZedMono Nerd Font"];
+          emoji = [];
+        };
     };
     fontDir = {
       enable = true;
