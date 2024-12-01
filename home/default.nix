@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    # ./specialisations.nix
     ./terminal
     inputs.nix-index-db.hmModules.nix-index
     self.nixosModules.theme
@@ -13,7 +12,7 @@
   home = {
     username = "linuxmobile";
     homeDirectory = "/home/linuxmobile";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
 
   # disable manuals as nmd fails to build often

@@ -1,4 +1,8 @@
-{lib, pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -18,6 +22,7 @@
           }
         '')
       ];
+      # extraConfig."wireplumber.profiles".main."monitor.libcamera" = "disabled";
     };
   };
 

@@ -3,9 +3,7 @@
     ./anyrun
     ./browsers/chromium.nix
     ./browsers/edge.nix
-    ./browsers/firefox.nix
-    # ./browsers/epiphany.nix
-    # ./browsers/qutebrowser.nix
+    ./browsers/zen.nix
     ./gtk.nix
     ./media
   ];
@@ -28,11 +26,14 @@
     catimg
     bun
 
+    nitch
+    maxfetch
+
     # gnome
     dconf-editor
     file-roller
     nautilus
-    # amberol
+    amberol
     # blanket
     # cavalier
     celluloid
@@ -51,7 +52,7 @@
     pwvucontrol
     resources
 
-    inkscape
+    # inkscape
     # gimp
     scrcpy
   ];

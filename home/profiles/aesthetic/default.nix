@@ -2,7 +2,6 @@
   imports = [
     # editors
     ../../editors/helix
-    # ../../editors/vscode
     ../../editors/zed
 
     # services
@@ -14,6 +13,9 @@
     # software
     ../../software
     ../../software/wayland
+
+    
+    ../../software/tools/discord.nix
 
     # system services
     ../../services/system/gpg-agent.nix

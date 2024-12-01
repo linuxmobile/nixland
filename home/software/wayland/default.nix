@@ -2,8 +2,6 @@
 # Wayland config
 {
   imports = [
-    # ./hyprland
-    # ./hyprlock.nix
     ./niri
     ./wlogout.nix
   ];
@@ -15,7 +13,6 @@
 
     # utils
     wl-clipboard
-    wl-screenrec
   ];
 
   # make stuff work on wayland

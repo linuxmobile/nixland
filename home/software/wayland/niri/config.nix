@@ -19,7 +19,7 @@ in {
       };
       spawn-at-startup = [
         (makeCommand "/usr/libexec/polkit-gnome-authentication-agent-1")
-        (makeCommand "hyprlock")
+        # (makeCommand "hyprlock")
         (makeCommand "systemctl --user start clight")
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")

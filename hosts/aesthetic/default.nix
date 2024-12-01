@@ -10,6 +10,9 @@
       "ideapad_laptop.allow_v4_dytc=Y"
       "nvme_core.default_ps_max_latency_us=0"
     ];
+    extraModprobeConfig = ''
+      options v4l2loopback exclusive_caps=1 card_label="OBS Virtual Output"
+    '';
   };
 
   networking.hostName = "aesthetic";

@@ -10,7 +10,6 @@
       perSystem = {
         config,
         pkgs,
-        system,
         ...
       }: {
         devShells = {
@@ -52,25 +51,18 @@
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    anyrun.url = "github:anyrun-org/anyrun";
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix = {
-      url = "github:SoraTenshi/helix/new-daily-driver";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    helix.url = "github:helix-editor/helix";
 
     hm = {
       url = "github:nix-community/home-manager";
@@ -81,7 +73,9 @@
 
     matugen = {
       url = "github:InioX/matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     niri = {
@@ -96,13 +90,15 @@
 
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
+    zen-browser = {
+      url = "github:fufexan/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
   };
 }

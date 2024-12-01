@@ -9,11 +9,13 @@
     bash
     brightnessctl
     bun
+    cliphist
     coreutils
     dart-sass
     fd
     fzf
     gawk
+    glib
     gtk3
     imagemagick
     inputs.matugen.packages.${pkgs.system}.default
@@ -24,12 +26,10 @@
     util-linux
     which
     wl-clipboard
-    glib
-    cliphist
   ];
 
   guiDeps = with pkgs; [
-    gnome.gnome-control-center
+    gnome-control-center
   ];
 
   dependencies = requiredDeps ++ guiDeps;

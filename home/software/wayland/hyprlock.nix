@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  font_family = "SF Pro Display";
+  font_family = "SF Pro Rounded";
 in {
   programs.hyprlock = {
     enable = true;

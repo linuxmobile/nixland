@@ -6,7 +6,7 @@
 # For fcitx5, we also need to disable "fractional scale under Wayland" to force it to run on Wayland natively.
 {
   home.packages = with pkgs; [
-    (microsoft-edge-dev.override {
+    (microsoft-edge.override {
       commandLineArgs = [
         # Force GPU accleration
         "--ignore-gpu-blocklist"

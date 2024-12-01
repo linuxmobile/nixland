@@ -3,10 +3,11 @@ let
     ./core/boot.nix
     ./core/default.nix
 
-    ./hardware/opengl.nix
+    ./hardware/graphics.nix
     ./hardware/fwupd.nix
 
     ./network/default.nix
+    ./network/avahi.nix
 
     ./programs
 

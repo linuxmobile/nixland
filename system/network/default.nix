@@ -1,5 +1,5 @@
-{lib, ...}:
 # networking configuration
+{pkgs, ...}:
 {
   networking.networkmanager = {
     enable = true;
@@ -12,7 +12,6 @@
       enable = true;
       settings.UseDns = true;
     };
-    gnome.glib-networking.enable = true;
 
     # DNS resolver
     resolved = {
@@ -22,5 +21,5 @@
   };
 
   # Don't wait for network startup
-  # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.NetworkManager-wait-online.serviceConfig.ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
 }
