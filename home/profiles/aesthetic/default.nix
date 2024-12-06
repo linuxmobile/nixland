@@ -7,6 +7,7 @@
     # software
     ../../software
     ../../software/wayland
+    ../../software/tools/discord.nix
 
     # system services
     ../../services/system/gpg-agent.nix
