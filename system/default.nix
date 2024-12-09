@@ -7,6 +7,7 @@ let
     ./hardware/fwupd.nix
 
     ./network/default.nix
+    ./network/avahi.nix
 
     ./programs
 
