@@ -4,27 +4,32 @@
   ...
 }: {
   environment = {
-    plasma6.excludePackages =
-      (with pkgs.kdePackages; [
-        oxygen
-        plasma-browser-integration
-        elisa
-        kate
-        khelpcenter
-      ]);
+    plasma6.excludePackages = with pkgs.kdePackages; [
+      oxygen
+      plasma-browser-integration
+      elisa
+      kate
+      khelpcenter
+      okular
+      gwenview
+    ];
     systemPackages = with pkgs; [
-    kdePackages.qtstyleplugin-kvantum
-    kdePackages.sddm-kcm
-    kdePackages.qt6ct
-    kde-rounded-corners
-    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+      kdePackages.qtstyleplugin-kvantum
+      kdePackages.sddm-kcm
+      kdePackages.qt6ct
+      kde-rounded-corners
+      inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
 
-    # apps
-    amberol
-    celluloid
-    kooha
-    loupe
-    resources
+      # apps
+      amberol
+      celluloid
+      kooha
+      loupe
+      resources
+      cavalier
+      easyeffects
+
+      wl-clipboard
     ];
   };
 
@@ -39,6 +44,7 @@
     };
     desktopManager.plasma6 = {
       enable = true;
+      xterm.enable = false;
     };
   };
 

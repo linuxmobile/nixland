@@ -55,11 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix = {
-      url = "github:SoraTenshi/helix/new-daily-driver";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    helix.url = "github:helix-editor/helix";
 
     hm = {
       url = "github:nix-community/home-manager";
@@ -79,7 +75,7 @@
     };
 
     zen-browser = {
-      url = "github:fufexan/zen-browser-flake";
+      url = "github:linuxmobile/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./browsers/chromium.nix
     ./browsers/edge.nix
@@ -26,7 +23,6 @@
     ffmpegthumbnailer
     imagemagick
     rizin
-    xcolor
     nodejs
     nodePackages.pnpm
     jq
@@ -35,5 +31,8 @@
     bun
 
     scrcpy
+
+    burpsuite
+    mitmproxy
   ];
 }
