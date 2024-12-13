@@ -23,26 +23,8 @@
       });
       langs = ["css" "scss" "json" "html"];
 
-      commonAutoPairs = {
-        "(" = ")";
-        "{" = "}";
-        "[" = "]";
-        "<" = ">";
-        "'" = "'";
-        "\"" = "\"";
-      };
     in
       [
-        {
-          name = "astro";
-          auto-format = true;
-          formatter = {
-            command = "${pkgs.nodePackages.prettier}/bin/prettier";
-            args = ["--parser" "astro"];
-          };
-          language-servers = ["astro-lsp" "emmet-lsp"];
-          auto-pairs = commonAutoPairs;
-        }
         {
           name = "bash";
           auto-format = true;
@@ -50,7 +32,6 @@
             command = "${pkgs.shfmt}/bin/shfmt";
             args = ["-i" "2"];
           };
-          auto-pairs = commonAutoPairs;
         }
         {
           name = "javascript";
@@ -66,7 +47,6 @@
             }
             "biome-lsp"
           ];
-          auto-pairs = commonAutoPairs;
         }
         {
           name = "json";
@@ -78,7 +58,6 @@
             }
             "biome-lsp"
           ];
-          auto-pairs = commonAutoPairs;
         }
         {
           name = "jsx";
@@ -94,13 +73,11 @@
             }
             "biome-lsp"
           ];
-          auto-pairs = commonAutoPairs;
         }
         {
           name = "markdown";
           auto-format = true;
           formatter = deno "md";
-          auto-pairs = commonAutoPairs;
         }
         {
           name = "typescript";
@@ -116,7 +93,6 @@
             }
             "biome-lsp"
           ];
-          auto-pairs = commonAutoPairs;
         }
         {
           name = "tsx";
@@ -132,19 +108,11 @@
             }
             "biome-lsp"
           ];
-          auto-pairs = commonAutoPairs;
         }
       ]
       ++ prettierLangs langs;
 
     language-server = {
-      astro-lsp = {
-        command = "astro-ls";
-        args = ["--stdio"];
-        file-types = ["astro"];
-        config.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib/";
-      };
-
       biome-lsp = {
         command = "biome";
         args = ["lsp-proxy"];
@@ -186,6 +154,16 @@
       unocss-lsp = {
         command = "unocss-language-server";
         args = ["--stdio"];
+      };
+
+      vscode-css-language-server = {
+        command = "${pkgs.vscode-langservers-extracted}/bin/css-languageserver";
+        args = ["--stdio"];
+        config = {
+          provideFormatter = true;
+          css.validate.enable = true;
+          scss.validate.enable = true;
+        };
       };
     };
   };

@@ -30,7 +30,7 @@
     in
       addAll {
         serif = ["Libertinus Serif"];
-        sansSerif = ["SF Pro Rounded"];
+        sansSerif = ["SF Pro"];
         monospace = ["ZedMono"];
         emoji = [];
       };

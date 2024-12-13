@@ -16,7 +16,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "SF Pro Rounded";
+      name = "SF Pro";
       package = inputs.self.packages.${pkgs.system}.SF-Pro;
       size = 11;
     };

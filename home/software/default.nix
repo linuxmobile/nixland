@@ -28,6 +28,7 @@
 
     nitch
     maxfetch
+    netscanner
 
     # gnome
     dconf-editor
@@ -35,7 +36,7 @@
     nautilus
     amberol
     # blanket
-    # cavalier
+    cavalier
     celluloid
     # contrast
     # eyedropper
@@ -51,9 +52,15 @@
     # planify
     pwvucontrol
     resources
+    gnome-control-center
+    
 
     # inkscape
     # gimp
     scrcpy
+
+    ironbar
+    burpsuite
+    xwayland-run
   ];
 }

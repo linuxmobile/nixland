@@ -91,6 +91,17 @@
         gnupg_path=$(ls $XDG_RUNTIME_DIR/gnupg)
         export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/$gnupg_path/S.gpg-agent.ssh"
       ''}
+
+      # Allow foot to pipe command output
+      function precmd {
+        if ! builtin zle; then
+            print -n "\e]133;D\e\\"
+        fi
+      }
+      function preexec {
+        print -n "\e]133;C\e\\"
+      }
+
     '';
 
     shellAliases =
@@ -130,7 +141,6 @@
         la = "eza -lah --tree";
         ls = "eza -h --git --icons --color=auto --group-directories-first -s extension";
         m = "mkdir -p";
-        md = "inlyne";
         mv = "mv -iv";
         ps = "procs";
         rm = "rm -iv";

@@ -50,17 +50,12 @@
       inputs.systems.follows = "systems";
     };
 
-    ags = {
-      url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ags = {
+    #   url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     anyrun.url = "github:anyrun-org/anyrun";
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     helix.url = "github:helix-editor/helix";
 
@@ -70,13 +65,6 @@
     };
 
     lanzaboote.url = "github:nix-community/lanzaboote";
-
-    matugen = {
-      url = "github:InioX/matugen";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
 
     niri = {
       url = "github:sodiboo/niri-flake";
@@ -96,8 +84,13 @@
       };
     };
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
-      url = "github:fufexan/zen-browser-flake";
+      url = "github:linuxmobile/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

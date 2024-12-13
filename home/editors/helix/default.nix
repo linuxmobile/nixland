@@ -22,7 +22,6 @@
             nil
             vscode-langservers-extracted
             nodePackages.typescript-language-server
-            nodePackages."@astrojs/language-server"
             typescript
           ])
         ];
@@ -67,6 +66,7 @@
           newline = "⤶";
         };
         auto-pairs = true;
+        clipboard-provider = "wayland";
       };
 
       keys.insert = {

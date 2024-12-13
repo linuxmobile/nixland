@@ -5,7 +5,8 @@
     ../../editors/zed
 
     # services
-    ../../services/ags
+    # ../../services/ags
+    ../../services/quickshell
 
     # media services
     ../../services/media/playerctl.nix

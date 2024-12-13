@@ -17,7 +17,7 @@ in {
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         NIXOS_OZONE_WL = "1";
         # test env
-        DISPLAY = null;
+        DISPLAY = ":0";
       };
       spawn-at-startup = [
         (makeCommand "/usr/libexec/polkit-gnome-authentication-agent-1")
@@ -53,7 +53,7 @@ in {
           tap-button-map = "left-right-middle";
         };
         focus-follows-mouse.enable = true;
-        # warp-mouse-to-focus = true;
+        warp-mouse-to-focus = true;
         workspace-auto-back-and-forth = true;
       };
       outputs = {
@@ -155,70 +155,60 @@ in {
         brillo = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000";
         playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
         ags = spawn "${pkgs.ags}/bin/ags" "-r";
-      in
-        {
-          "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
-          "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
+      in {
+        "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+        "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
 
-          "XF86AudioPlay".action = playerctl "play-pause";
-          "XF86AudioStop".action = playerctl "pause";
-          "XF86AudioPrev".action = playerctl "previous";
-          "XF86AudioNext".action = playerctl "next";
+        "XF86AudioPlay".action = playerctl "play-pause";
+        "XF86AudioStop".action = playerctl "pause";
+        "XF86AudioPrev".action = playerctl "previous";
+        "XF86AudioNext".action = playerctl "next";
 
-          "XF86AudioRaiseVolume".action = set-volume "5%+";
-          "XF86AudioLowerVolume".action = set-volume "5%-";
+        "XF86AudioRaiseVolume".action = set-volume "5%+";
+        "XF86AudioLowerVolume".action = set-volume "5%-";
 
-          "XF86MonBrightnessUp".action = brillo "-A" "5";
-          "XF86MonBrightnessDown".action = brillo "-U" "5";
+        "XF86MonBrightnessUp".action = brillo "-A" "5";
+        "XF86MonBrightnessDown".action = brillo "-U" "5";
 
-          "XF86Calculator".action = ags "recorder.start()";
-          "Print".action = screenshot-screen;
-          "Mod+Shift+Alt+S".action = screenshot-window;
-          "Mod+Shift+S".action = screenshot;
-          "Mod+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
-          "Mod+Return".action = spawn "${pkgs.foot}/bin/foot";
-          # "Ctrl+Alt+L".action = spawn "pgrep hyprlock || hyprlock";
+        "XF86Calculator".action = ags "recorder.start()";
+        "Print".action = screenshot-screen;
+        "Mod+Shift+Alt+S".action = screenshot-window;
+        "Mod+Shift+S".action = screenshot;
+        "Mod+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
+        "Mod+Return".action = spawn "${pkgs.foot}/bin/foot";
+        # "Ctrl+Alt+L".action = spawn "pgrep hyprlock || hyprlock";
 
-          "Mod+Q".action = close-window;
-          "Mod+S".action = switch-preset-column-width;
-          "Mod+F".action = maximize-column;
-          "Mod+Shift+F".action = fullscreen-window;
+        "Mod+Q".action = close-window;
+        "Mod+S".action = switch-preset-column-width;
+        "Mod+F".action = maximize-column;
+        "Mod+Shift+F".action = fullscreen-window;
 
-          "Mod+Comma".action = consume-window-into-column;
-          "Mod+Period".action = expel-window-from-column;
-          "Mod+C".action = center-column;
+        "Mod+Comma".action = consume-window-into-column;
+        "Mod+Period".action = expel-window-from-column;
+        "Mod+C".action = center-column;
 
-          "Mod+Minus".action = set-column-width "-10%";
-          "Mod+Plus".action = set-column-width "+10%";
-          "Mod+Shift+Minus".action = set-window-height "-10%";
-          "Mod+Shift+Plus".action = set-window-height "+10%";
+        "Mod+Minus".action = set-column-width "-10%";
+        "Mod+Plus".action = set-column-width "+10%";
+        "Mod+Shift+Minus".action = set-window-height "-10%";
+        "Mod+Shift+Plus".action = set-window-height "+10%";
 
-          "Mod+H".action = focus-column-left;
-          "Mod+L".action = focus-column-right;
-          "Mod+J".action = focus-workspace-down;
-          "Mod+K".action = focus-workspace-up;
-          "Mod+Left".action = focus-column-left;
-          "Mod+Right".action = focus-column-right;
-          "Mod+Down".action = focus-window-down;
-          "Mod+Up".action = focus-window-up;
+        "Mod+H".action = focus-column-left;
+        "Mod+L".action = focus-column-right;
+        "Mod+J".action = focus-workspace-down;
+        "Mod+K".action = focus-workspace-up;
+        "Mod+Left".action = focus-column-left;
+        "Mod+Right".action = focus-column-right;
+        "Mod+Down".action = focus-window-down;
+        "Mod+Up".action = focus-window-up;
 
-          "Mod+Shift+H".action = move-column-left;
-          "Mod+Shift+L".action = move-column-right;
-          "Mod+Shift+K".action = move-column-to-workspace-up;
-          "Mod+Shift+J".action = move-column-to-workspace-down;
+        "Mod+Shift+H".action = move-column-left;
+        "Mod+Shift+L".action = move-column-right;
+        "Mod+Shift+K".action = move-column-to-workspace-up;
+        "Mod+Shift+J".action = move-column-to-workspace-down;
 
-          "Mod+Shift+Ctrl+J".action = move-column-to-monitor-down;
-          "Mod+Shift+Ctrl+K".action = move-column-to-monitor-up;
-        }
-        // (lib.attrsets.mergeAttrsList (
-          map (x: let
-            xStr = builtins.toString x;
-          in {
-            "Mod+${xStr}".action = focus-workspace x;
-            "Mod+Shift+${xStr}".action = move-column-to-workspace x;
-          })
-          (builtins.genList (x: x + 1) 9)
-        ));
+        "Mod+Shift+Ctrl+J".action = move-column-to-monitor-down;
+        "Mod+Shift+Ctrl+K".action = move-column-to-monitor-up;
+      };
       window-rules = [
         {
           geometry-corner-radius = let
@@ -234,12 +224,10 @@ in {
         {
           matches = [{app-id = "org.telegram.desktop";}];
           block-out-from = "screencast";
-          max-width = 550;
         }
         {
           matches = [{app-id = "app.drey.PaperPlane";}];
           block-out-from = "screencast";
-          max-width = 550;
         }
         {
           matches = [{app-id = "com.rafaelmardojai.Blanket";}];
