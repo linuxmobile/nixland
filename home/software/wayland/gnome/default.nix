@@ -8,7 +8,7 @@
     packages = with pkgs; [
       amberol
       blanket
-      # cavalier
+      cavalier
       celluloid
       contrast
       eyedropper
@@ -24,6 +24,7 @@
       parabolic
       planify
       resources
+      easyeffects
 
       # Terminal
       (blackbox-terminal.override {sixelSupport = true;})
