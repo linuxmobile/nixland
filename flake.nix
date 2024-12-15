@@ -79,6 +79,13 @@
       };
     };
 
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs"; # Your existing follow
+    };
+
+    "nixos-cosmic/nixpkgs".follows = "nixpkgs";
+
     zen-browser = {
       url = "github:linuxmobile/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

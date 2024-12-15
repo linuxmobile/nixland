@@ -12,7 +12,7 @@ let
     ./programs
 
     ./services
-    ./services/greetd.nix
+    # ./services/greetd.nix
     # ./services/gdm.nix
     ./services/pipewire.nix
   ];
