@@ -6,7 +6,7 @@
 
     # services
     # ../../services/ags
-    ../../services/quickshell
+    # ../../services/quickshell
 
     # media services
     ../../services/media/playerctl.nix

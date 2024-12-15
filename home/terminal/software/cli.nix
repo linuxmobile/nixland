@@ -17,6 +17,8 @@
     jaq
     ripgrep
     killall
+    koji
+    jq
 
     yt-dlp
   ];

@@ -48,7 +48,7 @@
     # paleta
     # paper-plane
     papers
-    # parabolic
+    parabolic
     # planify
     pwvucontrol
     resources
@@ -59,7 +59,8 @@
     # gimp
     scrcpy
 
-    ironbar
+    eww
+    swww
     burpsuite
     xwayland-run
   ];

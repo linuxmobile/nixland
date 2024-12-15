@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
@@ -25,6 +24,8 @@ in {
         (makeCommand "systemctl --user start clight")
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
+        (makeCommand "swww-daemon")
+        (makeCommand "eww open bar")
         {
           command = [
             "${pkgs.dbus}/bin/dbus-update-activation-environment"

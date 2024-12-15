@@ -50,11 +50,6 @@
       inputs.systems.follows = "systems";
     };
 
-    # ags = {
-    #   url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     anyrun.url = "github:anyrun-org/anyrun";
 
     helix.url = "github:helix-editor/helix";
@@ -82,11 +77,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
-    };
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {
