@@ -81,7 +81,6 @@
 
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs"; # Your existing follow
     };
 
     "nixos-cosmic/nixpkgs".follows = "nixpkgs";
