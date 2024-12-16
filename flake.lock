@@ -49,6 +49,21 @@
     },
     "crane": {
       "locked": {
+        "lastModified": 1733688869,
+        "narHash": "sha256-KrhxxFj1CjESDrL5+u/zsVH0K+Ik9tvoac/oFPoxSB8=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "604637106e420ad99907cae401e13ab6b452e7d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
+    "crane_2": {
+      "locked": {
         "lastModified": 1727974419,
         "narHash": "sha256-WD0//20h+2/yPGkO88d2nYbb23WMWYvnRyDQ9Dx4UHg=",
         "owner": "ipetkov",
@@ -62,7 +77,7 @@
         "type": "github"
       }
     },
-    "crane_2": {
+    "crane_3": {
       "locked": {
         "lastModified": 1730652660,
         "narHash": "sha256-+XVYfmVXAiYA0FZT7ijHf555dxCe+AoAT5A6RU+6vSo=",
@@ -288,7 +303,7 @@
     },
     "helix": {
       "inputs": {
-        "crane": "crane",
+        "crane": "crane_2",
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_2",
         "rust-overlay": "rust-overlay"
@@ -329,7 +344,7 @@
     },
     "lanzaboote": {
       "inputs": {
-        "crane": "crane_2",
+        "crane": "crane_3",
         "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts_3",
         "nixpkgs": "nixpkgs_3",
@@ -585,22 +600,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1734119587,
-        "narHash": "sha256-AKU6qqskl0yf2+JdRdD0cfxX4b9x3KKV5RqA6wijmPM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "3566ab7246670a43abd2ffa913cc62dad9cdf7d5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -632,6 +631,7 @@
       "inputs": {
         "agenix": "agenix",
         "anyrun": "anyrun",
+        "crane": "crane",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts_2",
         "flake-utils": "flake-utils",
@@ -642,10 +642,10 @@
         "nix-gaming": "nix-gaming",
         "nix-index-db": "nix-index-db",
         "nixos-cosmic": "nixos-cosmic",
-        "nixos-cosmic/nixpkgs": [
+        "nixpkgs": [
+          "nixos-cosmic",
           "nixpkgs"
         ],
-        "nixpkgs": "nixpkgs_5",
         "systems": "systems_3",
         "zen-browser": "zen-browser"
       }
@@ -839,11 +839,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734228715,
-        "narHash": "sha256-nbOJhRe2sbUl4EZ+xP32/HJND5IcCtBabeXvQ6+H+Wo=",
+        "lastModified": 1734310264,
+        "narHash": "sha256-IkmT7LtHy8fSGSzzYCaMGamJx2hQKPdmd4UuM4ruuuM=",
         "owner": "linuxmobile",
         "repo": "zen-browser-flake",
-        "rev": "89c26f00c2aa3b27e086f03c3b1715d81c43e7dc",
+        "rev": "20e3284b541c1a4237593a42a3a00e4b71f50794",
         "type": "github"
       },
       "original": {

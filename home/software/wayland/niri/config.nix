@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
   pointer = config.home.pointerCursor;
@@ -21,11 +22,12 @@ in {
       spawn-at-startup = [
         (makeCommand "/usr/libexec/polkit-gnome-authentication-agent-1")
         # (makeCommand "hyprlock")
-        (makeCommand "systemctl --user start clight")
+        # (makeCommand "systemctl --user start clight")
+        (makeCommand "${inputs.self.packages.${pkgs.system}.cosmic-ext-alt}/bin/cosmic-ext-alternative-startup")
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "swww-daemon")
-        (makeCommand "eww open bar")
+        # (makeCommand "eww open bar")
         {
           command = [
             "${pkgs.dbus}/bin/dbus-update-activation-environment"
@@ -175,9 +177,11 @@ in {
         "Print".action = screenshot-screen;
         "Mod+Shift+Alt+S".action = screenshot-window;
         "Mod+Shift+S".action = screenshot;
-        "Mod+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
+        "Mod+Ctrl+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
+        "Mod+D".action = spawn "cosmic-launcher";
+        "Mod+Shift+D".action = spawn "cosmic-app-library";
         "Mod+Return".action = spawn "${pkgs.foot}/bin/foot";
-        # "Ctrl+Alt+L".action = spawn "pgrep hyprlock || hyprlock";
+        "Ctrl+Alt+L".action = spawn "cosmic-greeter";
 
         "Mod+Q".action = close-window;
         "Mod+S".action = switch-preset-column-width;

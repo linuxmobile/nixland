@@ -13,19 +13,19 @@
 
     cosmic.excludePackages = with pkgs; [
       # adwaita-icon-theme
-      cosmic-edit
+      # cosmic-edit
       # cosmic-files
       # cosmic-launcher
-      cosmic-term
+      # cosmic-term
       # hicolor-icon-theme
-      pop-icon-theme
-      pop-launcher
+      # pop-icon-theme
+      # pop-launcher
 
-      cosmic-bg
+      # cosmic-bg
       cosmic-store
-      cosmic-wallpapers
-      cosmic-screenshot
-      xdg-desktop-portal-cosmic
+      # cosmic-wallpapers
+      # cosmic-screenshot
+      # xdg-desktop-portal-cosmic
     ];
   };
 

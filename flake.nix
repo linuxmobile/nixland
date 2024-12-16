@@ -52,6 +52,8 @@
 
     anyrun.url = "github:anyrun-org/anyrun";
 
+    crane.url = "github:ipetkov/crane";
+
     helix.url = "github:helix-editor/helix";
 
     hm = {
@@ -79,11 +81,8 @@
       };
     };
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-    };
-
-    "nixos-cosmic/nixpkgs".follows = "nixpkgs";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
     zen-browser = {
       url = "github:linuxmobile/zen-browser-flake";
