@@ -178,10 +178,10 @@ in {
         "Mod+Shift+Alt+S".action = screenshot-window;
         "Mod+Shift+S".action = screenshot;
         "Mod+Ctrl+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
-        "Mod+D".action = spawn "cosmic-launcher";
-        "Mod+Shift+D".action = spawn "cosmic-app-library";
+        "Mod+D".action = spawn "${inputs.nixos-cosmic.packages.${pkgs.system}.cosmic-launcher}/bin/cosmic-launcher";
+        # "Mod+Shift+D".action = spawn "${inputs.nixos-cosmic.packages.${pkgs.system}.cosmic-app-library}/bin/cosmic-app-library";
         "Mod+Return".action = spawn "${pkgs.foot}/bin/foot";
-        "Ctrl+Alt+L".action = spawn "cosmic-greeter";
+        "Ctrl+Alt+L".action = spawn "${inputs.nixos-cosmic.packages.${pkgs.system}.cosmic-greeter}/bin/cosmic-greeter";
 
         "Mod+Q".action = close-window;
         "Mod+S".action = switch-preset-column-width;

@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.niri.homeModules.niri ./config.nix ./scripts/start-cosmic-ext.nix];
+  imports = [inputs.niri.homeModules.niri ./config.nix];
 
   home = {
     packages = with pkgs; [
