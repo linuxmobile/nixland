@@ -19,8 +19,6 @@
     killall
     koji
     jq
-
-    yt-dlp
   ];
 
   programs = {

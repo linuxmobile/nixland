@@ -12,8 +12,6 @@ let
     ./programs
 
     ./services
-    # ./services/greetd.nix
-    # ./services/gdm.nix
     ./services/pipewire.nix
   ];
 
@@ -21,9 +19,8 @@ let
     desktop
     ++ [
       ./hardware/bluetooth.nix
-      # ./hardware/xboxdrv.nix
 
-      ./services/backlight.nix
+      # ./services/backlight.nix
       ./services/power.nix
     ];
 in {

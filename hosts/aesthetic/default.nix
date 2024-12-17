@@ -1,5 +1,5 @@
 {config, ...}: {
-  imports = [./hardware-configuration.nix ./powersave.nix];
+  imports = [./hardware-configuration.nix];
 
   boot = {
     # load modules on boot
