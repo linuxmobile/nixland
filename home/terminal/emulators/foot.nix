@@ -9,12 +9,13 @@
     enable = true;
     settings = {
       main = {
-        font = "ZedMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
-        box-drawings-uses-font-glyphs = "yes";
+        font = "SFMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
+        # box-drawings-uses-font-glyphs = "yes";
         dpi-aware = "yes";
         horizontal-letter-offset = 0;
         vertical-letter-offset = 0;
         pad = "25x25center";
+        term = "xterm-256color";
         selection-target = "clipboard";
         include = "${config.xdg.configHome}/foot/theme.ini";
       };
