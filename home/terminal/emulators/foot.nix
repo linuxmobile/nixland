@@ -4,11 +4,24 @@
     enable = true;
     settings = {
       main = {
+<<<<<<< HEAD
         font = "GeistMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
         box-drawings-uses-font-glyphs = "yes";
+||||||| parent of 870e06f (feat(fonts): added sf-pro mono font)
+        font = "ZedMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
+        box-drawings-uses-font-glyphs = "yes";
+=======
+        font = "SFMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
+        # box-drawings-uses-font-glyphs = "yes";
+>>>>>>> 870e06f (feat(fonts): added sf-pro mono font)
         dpi-aware = "yes";
         pad = "25x25center";
+<<<<<<< HEAD
         notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
+||||||| parent of 870e06f (feat(fonts): added sf-pro mono font)
+=======
+        term = "xterm-256color";
+>>>>>>> 870e06f (feat(fonts): added sf-pro mono font)
         selection-target = "clipboard";
       };
       scrollback = {
