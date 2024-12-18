@@ -21,7 +21,6 @@ let
     desktop
     ++ [
       ./hardware/bluetooth.nix
-      # ./hardware/xboxdrv.nix
 
       ./services/backlight.nix
       ./services/power.nix
