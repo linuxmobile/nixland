@@ -112,7 +112,8 @@
 
         # git
         g = "git";
-        commit = "git add . && git commit -m";
+        add = "git add .";
+        commit = "git commit -m";
         push = "git push";
         pull = "git pull";
         gcld = "git clone --depth";
@@ -134,18 +135,11 @@
         mv = "mv -iv";
         ps = "procs";
         rm = "rm -iv";
-        tmusic = "termusic";
         tree = "eza --tree --icons --tree";
-
-        # youtube-dl
-        ytmp3 = "yt-dlp --ignore-errors -x --audio-format mp3 -f bestaudio --audio-quality 0 --embed-metadata --embed-thumbnail --output '%(title)s.%(ext)s'";
 
         # systemctl
         us = "systemctl --user";
         rs = "sudo systemctl";
-
-        # myself
-        run = "pnpm run";
       }
       // lib.optionalAttrs (config.programs.bat.enable == true) {cat = "bat";};
     shellGlobalAliases = {eza = "eza --icons --git";};
