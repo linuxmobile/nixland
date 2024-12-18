@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = [pkgs.gh];
 
   # enable scrolling in git diff
@@ -20,9 +16,27 @@
 
     delta = {
       enable = true;
-      options.${config.theme.name} = true;
-    };
+      options = {
+        navigate = true;
+        side-by-side = true;
+        true-color = "never";
 
+        features = "unobtrusive-line-numbers decorations";
+        unobtrusive-line-numbers = {
+          line-numbers = true;
+          line-numbers-left-format = "{nm:>4}│";
+          line-numbers-right-format = "{np:>4}│";
+          line-numbers-left-style = "grey";
+          line-numbers-right-style = "grey";
+        };
+        decorations = {
+          commit-decoration-style = "bold grey box ul";
+          file-style = "bold blue";
+          file-decoration-style = "ul";
+          hunk-header-decoration-style = "box";
+        };
+      };
+    };
     extraConfig = {
       init.defaultBranch = "main";
       diff.colorMoved = "default";
