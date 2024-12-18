@@ -16,9 +16,11 @@
       roboto
 
       inputs.self.packages.${pkgs.system}.SF-Pro
+      inputs.self.packages.${pkgs.system}.SF-Pro-mono
 
       # nerdfonts
       nerd-fonts.zed-mono
+      nerd-fonts.fira-code
       nerd-fonts.symbols-only
     ];
 
