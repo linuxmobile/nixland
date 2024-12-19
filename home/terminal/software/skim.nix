@@ -1,10 +1,10 @@
 {
   programs.skim = {
     enable = true;
-    enableZshIntegration = true;
+    # enableNushellIntegration = true;
     defaultCommand = "rg --files --hidden";
     changeDirWidgetOptions = [
-      "--preview 'exa --icons --git --color always -T -L 3 {} | head -200'"
+      "--preview 'eza --icons --git --color always -T -L 3 {} | head -200'"
       "--exact"
     ];
   };

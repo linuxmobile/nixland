@@ -1,12 +1,12 @@
 {config, ...}: let
-  data = config.xdg.dataHome;
   conf = config.xdg.configHome;
   cache = config.xdg.cacheHome;
 in {
   imports = [
     ./software
     ./shell/starship.nix
-    ./shell/zsh.nix
+    ./shell/nushell.nix
+    # ./shell/zsh.nix
   ];
 
   home.sessionVariables = {
