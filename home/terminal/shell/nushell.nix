@@ -65,10 +65,9 @@
             (map completion names);
       in ''
         $env.config = ${conf};
+
         ${completions ["git" "nix" "man" "cargo" "curl" "rg"]}
 
-        # alias pueue = ${pkgs.pueue}/bin/pueue
-        # alias pueued = ${pkgs.pueue}/bin/pueued
         # use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/task.nu
         source ${pkgs.nu_scripts}/share/nu_scripts/modules/formats/from-env.nu
 

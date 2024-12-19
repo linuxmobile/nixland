@@ -69,7 +69,7 @@ in {
           mode = {
             width = 1920;
             height = 1080;
-            refresh = 75.973;
+            refresh = null;
           };
           scale = 1.0;
           position = {
