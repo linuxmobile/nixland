@@ -90,7 +90,8 @@
 
       shellAliases = {
         # installed = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq | sk";
-        # installedall = "nix-store --query --requisites /run/current-system | sk";
+        installed = "nix-store --query --requisites /run/current-system | parse ''{hash}-{name}'' | get name | sort | uniq | sk";
+        installedall = "nix-store --query --requisites /run/current-system | sk";
         cleanup = "sudo nix-collect-garbage --delete-older-than 1d";
         listgen = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
         nixremove = "nix-store --gc";
@@ -118,13 +119,14 @@
 
         cat = "bat --theme=base16 --number --color=always --paging=never --tabs=2 --wrap=never";
         cp = "cp -iv";
-        du = "du-dust";
+        # du = "du-dust";
         # fcd = "cd $(fd --type d | sk)";
         fm = "yazi";
         grep = "rg";
         l = "eza -lF --time-style=long-iso --icons";
         la = "eza -lah --tree";
-        ls = "eza -h --git --icons --color=auto --group-directories-first -s extension";
+        # ls = "eza -h --git --icons --color=auto --group-directories-first -s extension";
+        ll = "eza -h --git --icons --color=auto --group-directories-first -s extension";
         mv = "mv -iv";
         ps = "procs";
         rm = "rm -iv";
