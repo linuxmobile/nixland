@@ -71,7 +71,7 @@ in {
           mode = {
             width = 1920;
             height = 1080;
-            refresh = 75.973;
+            refresh = null;
           };
           scale = 1.0;
           position = {
@@ -217,7 +217,7 @@ in {
       window-rules = [
         {
           geometry-corner-radius = let
-            radius = 8.0;
+            radius = 12.0;
           in {
             bottom-left = radius;
             bottom-right = radius;
