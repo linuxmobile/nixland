@@ -2,7 +2,7 @@
   # https://docs.atuin.sh/configuration/config/
   programs.atuin = {
     enable = true;
-    enableNushellIntegration = true;
+    enableZshIntegration = true;
     flags = [
       "--disable-up-arrow"
     ];

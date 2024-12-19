@@ -25,7 +25,7 @@
 
   programs = {
     eza.enable = true;
-    # eza.enableNushellIntegration = true;
+    eza.enableZshIntegration = true;
     ssh.enable = true;
     dircolors = {
       enable = true;
