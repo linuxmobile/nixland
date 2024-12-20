@@ -1,12 +1,12 @@
 {
   imports = [
+    ./atuin.nix
     ./bat.nix
     ./bottom.nix
     ./cli.nix
     ./gpg.nix
     ./git.nix
     ./gitui.nix
-    # ./neofetch.nix
     ./nix.nix
     ./skim.nix
     ./transient-services.nix
