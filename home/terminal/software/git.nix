@@ -14,15 +14,6 @@
       signByDefault = true;
     };
 
-<<<<<<< HEAD
-    delta = {
-      enable = true;
-    };
-||||||| parent of 51b1d2b (feat(delta): readded delta)
-    # delta = {
-    #   enable = true;
-    # };
-=======
     delta = {
       enable = true;
       options = {
@@ -46,7 +37,6 @@
         };
       };
     };
->>>>>>> 51b1d2b (feat(delta): readded delta)
 
     extraConfig = {
       init.defaultBranch = "main";
