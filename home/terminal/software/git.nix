@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-{
-  pkgs,
-  config,
-  ...
-}: {
-||||||| parent of 51b1d2b (feat(delta): readded delta)
-{
-  pkgs,
-  ...
-}: {
-=======
 {pkgs, ...}: {
->>>>>>> 51b1d2b (feat(delta): readded delta)
   home.packages = [pkgs.gh];
 
   # enable scrolling in git diff
@@ -27,16 +14,6 @@
       signByDefault = true;
     };
 
-<<<<<<< HEAD
-    delta = {
-      enable = true;
-      options.${config.theme.name} = true;
-    };
-||||||| parent of 51b1d2b (feat(delta): readded delta)
-    # delta = {
-    #   enable = true;
-    # };
-=======
     delta = {
       enable = true;
       options = {
@@ -60,7 +37,6 @@
         };
       };
     };
->>>>>>> 51b1d2b (feat(delta): readded delta)
 
     extraConfig = {
       init.defaultBranch = "main";
