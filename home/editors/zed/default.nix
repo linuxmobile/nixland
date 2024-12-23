@@ -1,23 +1,15 @@
-{
-  pkgs,
-  ...
-}: let
-  zed-fhs = pkgs.buildFHSUserEnv {
-    name = "zed";
-    targetPkgs = pkgs:
-      with pkgs; [
-        zed-editor
-      ];
-    runScript = "zeditor";
-  };
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    zed-fhs
     nodejs
     biome
     vue-language-server
     vscode-langservers-extracted
-    nixd
+    nil
     typescript-language-server
+    zed-editor
   ];
+
+  programs.zsh.shellAliases = {
+    zed = "zeditor";
+  };
 }
