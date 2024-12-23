@@ -60,6 +60,7 @@
     scrcpy
 
     eww
+    dunst
     swww
     burpsuite
     xwayland-run
