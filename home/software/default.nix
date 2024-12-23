@@ -35,5 +35,7 @@
     bun
 
     scrcpy
+    xwayland-run
+    burpsuite
   ];
 }
