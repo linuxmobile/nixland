@@ -15,6 +15,7 @@
     ps_mem
     nitch
     maxfetch
+    netscanner
 
     # misc
     pciutils
@@ -33,6 +34,7 @@
     scrcpy
 
     burpsuite
+    xwayland-run
     mitmproxy
   ];
 }

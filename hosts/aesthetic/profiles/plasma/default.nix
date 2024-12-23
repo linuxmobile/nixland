@@ -35,6 +35,7 @@
 
   services = {
     xserver.enable = true;
+    xserver.desktopManager.xterm.enable = false;
     displayManager = {
       sddm = {
         enable = true;
@@ -44,7 +45,6 @@
     };
     desktopManager.plasma6 = {
       enable = true;
-      xterm.enable = false;
     };
   };
 
