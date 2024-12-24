@@ -6,7 +6,7 @@
   # Create a wrapper script for zen-browser with Wayland enabled
   zenWithWayland = pkgs.symlinkJoin {
     name = "zen-browser-wayland";
-    paths = [inputs.zen-browser.packages."${pkgs.system}".twilight.generic];
+    paths = [inputs.zen-browser.packages."${pkgs.system}".twilight];
     buildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/zen \
