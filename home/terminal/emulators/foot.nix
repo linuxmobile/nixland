@@ -3,6 +3,9 @@
   programs.foot = {
     enable = true;
     settings = {
+      csd = {
+        size = 0;
+      };
       main = {
         font = "SFMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
         dpi-aware = "yes";

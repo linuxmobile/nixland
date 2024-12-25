@@ -29,9 +29,6 @@
       # Terminal
       (blackbox-terminal.override {sixelSupport = true;})
       lsix
-
-      inkscape
-      gimp
     ];
   };
 }

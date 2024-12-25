@@ -7,6 +7,12 @@
     tiling-shell
     user-themes
     light-style
+    media-controls
+    tray-icons-reload
+    search-light
+    coverflow-alt-tab
+    vitals
+    clipboard-indicator
   ];
 in {
   home.packages = with pkgs;
