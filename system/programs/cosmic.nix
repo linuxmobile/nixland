@@ -13,7 +13,7 @@
 
     cosmic.excludePackages = with pkgs; [
       # adwaita-icon-theme
-      cosmic-edit
+      # cosmic-edit
       # cosmic-files
       # cosmic-launcher
       # cosmic-term
@@ -21,7 +21,7 @@
       # pop-icon-theme
       # pop-launcher
 
-      cosmic-bg
+      # cosmic-bg
       cosmic-store
       cosmic-wallpapers
       cosmic-screenshot
