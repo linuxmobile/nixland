@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./anyrun
     ./browsers/chromium.nix
@@ -37,23 +41,23 @@
     amberol
     # blanket
     cavalier
-    celluloid
+    (celluloid.override {youtubeSupport = true;})
     # contrast
     # eyedropper
     # gnome-solanum
-    # keypunch
+    keypunch
     kooha
+    letterpress
     loupe
     overskride
     # paleta
     # paper-plane
-    papers
+    (papers.override {supportNautilus = true;})
     parabolic
     # planify
     pwvucontrol
     resources
     gnome-control-center
-    
 
     # inkscape
     # gimp
@@ -64,5 +68,7 @@
     swww
     burpsuite
     xwayland-run
+
+    inputs.ghostty.packages.${pkgs.system}.default
   ];
 }

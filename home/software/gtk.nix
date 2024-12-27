@@ -24,8 +24,11 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     iconTheme = {
-      name = "Colloid";
-      package = pkgs.colloid-icon-theme;
+      name = "WhiteSur";
+      package = pkgs.whitesur-icon-theme.override {
+        boldPanelIcons = true;
+        alternativeIcons = true;
+      };
     };
 
     gtk3 = {
