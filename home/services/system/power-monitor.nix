@@ -1,95 +1,90 @@
 {
   pkgs,
   lib,
-  # config,
   ...
 }: let
   script = pkgs.writeShellScript "power_monitor.sh" ''
-    BAT=$(echo /sys/class/power_supply/BAT*)
-    BAT_STATUS="$BAT/status"
-    BAT_CAP="$BAT/capacity"
+    set -euo pipefail
 
-    AC_PROFILE="performance"
-    BAT_PROFILE="power-saver"
-    BALANCED_PROFILE="balanced"
+    log() {
+      echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >&2
+    }
 
-    # wait a while if needed
-    [[ -z $STARTUP_WAIT ]] || sleep "$STARTUP_WAIT"
+    get_battery_path() {
+      local bat_path
+      bat_path=$(echo /sys/class/power_supply/BAT*)
+      if [[ ! -d "$bat_path" ]]; then
+        log "No battery found"
+        exit 1
+      fi
+      echo "$bat_path"
+    }
 
-    # start the monitor loop
-    currentStatus=$(cat "$BAT_STATUS")
-    prevProfile=$AC_PROFILE
-    prevStatus="Charging"
+    readonly BAT="$(get_battery_path)"
+    readonly BAT_STATUS="$BAT/status"
+    readonly BAT_CAP="$BAT/capacity"
+    readonly LOW_BAT_PERCENT=20
 
-    # initial run logic
-    if [[ "$currentStatus" == "Discharging" ]]; then
-      profile=$BAT_PROFILE
-    else
-      profile=$AC_PROFILE
+    readonly AC_PROFILE="performance"
+    readonly BAT_PROFILE="balanced"
+    readonly LOW_BAT_PROFILE="power-saver"
+
+    for file in "$BAT_STATUS" "$BAT_CAP"; do
+      if [[ ! -f "$file" ]]; then
+        log "Required file not found: $file"
+        exit 1
+      fi
+    done
+
+    if ! command -v powerprofilesctl >/dev/null 2>&1; then
+      log "powerprofilesctl not found"
+      exit 1
     fi
 
-    # Apply initial profile settings
-    if [[ $prevProfile != "$profile" ]]; then
-      echo setting power profile to $profile
-      powerprofilesctl set $profile
-      prevProfile=$profile
-      prevStatus=$currentStatus
+    if [[ -n "''${STARTUP_WAIT:-}" ]]; then
+      sleep "$STARTUP_WAIT"
     fi
+
+    get_power_profile() {
+      local status capacity
+      status=$(cat "$BAT_STATUS")
+      capacity=$(cat "$BAT_CAP")
+
+      if [[ "$status" == "Discharging" ]]; then
+        if [[ "$capacity" -gt $LOW_BAT_PERCENT ]]; then
+          echo "$BAT_PROFILE"
+        else
+          echo "$LOW_BAT_PROFILE"
+        fi
+      else
+        echo "$AC_PROFILE"
+      fi
+    }
+
+    apply_profile() {
+      local profile=$1
+      log "Setting power profile to $profile"
+      if ! powerprofilesctl set "$profile"; then
+        log "Failed to set power profile"
+        return 1
+      fi
+    }
+
+    log "Starting power monitor"
+    prev_profile=""
 
     while true; do
-      # read the current battery level and status
-      level=$(cat "$BAT_CAP")
-      status=$(cat "$BAT_STATUS")
+      current_profile=$(get_power_profile)
 
-      # set the profile based on the battery level and status
-      if [[ $status == "Charging" ]]; then
-        profile=$AC_PROFILE
-        # Apply Hyprland settings for AC_PROFILE
-      elif (( level > 30 )); then
-        profile=$BALANCED_PROFILE
-        # Apply Hyprland settings for BALANCED_PROFILE
-      else
-        profile=$BAT_PROFILE
-        # Apply Hyprland settings for BAT_PROFILE
+      if [[ "$prev_profile" != "$current_profile" ]]; then
+        apply_profile "$current_profile"
+        prev_profile=$current_profile
       fi
 
-      # Apply Hyprland settings based on the selected profile
-      # for i in $(hyprctl instances -j | jaq ".[].instance" -r); do
-      #   case $profile in
-      #     $AC_PROFILE)
-      #       hyprctl -i "$i" --batch 'keyword decoration:blur:enabled true; keyword animations:enabled true; keyword decoration:active_opacity 0.9; keyword decoration:inactive_opacity 0.9'
-      #       ;;
-      #     $BALANCED_PROFILE)
-      #       hyprctl -i "$i" --batch 'keyword decoration:blur:enabled true; keyword animations:enabled false; keyword decoration:active_opacity 0.9; keyword decoration:inactive_opacity 0.9'
-      #       ;;
-      #     $BAT_PROFILE)
-      #       hyprctl -i "$i" --batch 'keyword decoration:blur:enabled false; keyword animations:enabled false; keyword decoration:active_opacity 1.0; keyword decoration:inactive_opacity 1.0'
-      #       ;;
-      #   esac
-      # done
-
-      # Notify and set the new profile if it has changed
-      if [[ $prevProfile != "$profile" ]] || [[ $prevStatus != "$status" ]]; then
-        echo setting power profile to $profile
-        powerprofilesctl set $profile
-        prevProfile=$profile
-        prevStatus=$status
-        # Send notification based on the profile
-        case $profile in
-          $AC_PROFILE)
-            notify-send -i ac-adapter-symbolic "Power Profile Changed" "Switched to Performance profile"
-            ;;
-          $BALANCED_PROFILE)
-            notify-send -i battery-good-symbolic "Power Profile Changed" "Switched to Balanced profile"
-            ;;
-          $BAT_PROFILE)
-            notify-send -i battery-low-symbolic "Power Profile Changed" "Switched to Power-Saver profile"
-            ;;
-        esac
+      if ! inotifywait -qq "$BAT_STATUS" "$BAT_CAP"; then
+        log "inotifywait failed, sleeping for 5 seconds before retry"
+        sleep 5
       fi
-
-      # wait for the next power change event
-      inotifywait -qq "$BAT_STATUS" "$BAT_CAP"
     done
   '';
 
@@ -97,17 +92,15 @@
     coreutils
     power-profiles-daemon
     inotify-tools
-    jaq
-    libnotify
+    gsettings-desktop-schemas
   ];
 in {
   # Power state monitor. Switches Power profiles based on charging state.
-  # Plugged in - performance
-  # Unplugged - power-saver
   systemd.user.services.power-monitor = {
     Unit = {
       Description = "Power Monitor";
       After = ["power-profiles-daemon.service"];
+      Wants = ["power-profiles-daemon.service"];
     };
 
     Service = {
@@ -115,6 +108,7 @@ in {
       Type = "simple";
       ExecStart = script;
       Restart = "on-failure";
+      RestartSec = "5s";
     };
 
     Install.WantedBy = ["default.target"];

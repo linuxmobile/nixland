@@ -9,7 +9,7 @@
     enable = true;
     settings = {
       main = {
-        font = "SFMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
+        font = "Liga SFMono Nerd Font:size=7.5:fontfeatures=calt:fontfeatures=dlig:fontfeatures=liga";
         dpi-aware = "yes";
         horizontal-letter-offset = 0;
         vertical-letter-offset = 0;

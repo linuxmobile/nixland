@@ -27,7 +27,6 @@
     cliphist
     nodejs
     nodePackages.pnpm
-    catimg
     bun
 
     nitch
@@ -66,9 +65,8 @@
     eww
     dunst
     swww
-    burpsuite
-    xwayland-run
+    mitmproxy
 
-    inputs.ghostty.packages.${pkgs.system}.default
+    # inputs.ghostty.packages.${pkgs.system}.default
   ];
 }

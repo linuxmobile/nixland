@@ -20,8 +20,9 @@
 
       # nerdfonts
       nerd-fonts.zed-mono
-      nerd-fonts.fira-code
       nerd-fonts.symbols-only
+      fira-code
+      maple-mono
     ];
 
     # causes more issues than it solves

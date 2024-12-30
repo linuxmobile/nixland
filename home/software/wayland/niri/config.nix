@@ -87,12 +87,7 @@ in {
         border = {
           enable = true;
           width = 1;
-          active.gradient = {
-            angle = 45;
-            relative-to = "workspace-view";
-            from = "#e55812";
-            to = "#e6aa1f";
-          };
+          active.color = "#e55812";
           inactive.color = "#412e4e";
         };
 
@@ -213,7 +208,7 @@ in {
       window-rules = [
         {
           geometry-corner-radius = let
-            radius = 12.0;
+            radius = 16.0;
           in {
             bottom-left = radius;
             bottom-right = radius;
@@ -221,6 +216,7 @@ in {
             top-right = radius;
           };
           clip-to-geometry = true;
+          draw-border-with-background = false;
         }
         {
           matches = [{app-id = "org.telegram.desktop";}];
