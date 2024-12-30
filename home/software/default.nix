@@ -12,7 +12,7 @@
 
   home.packages = with pkgs; [
     # messaging
-    tdesktop
+    telegram-desktop
     vesktop
 
     ps_mem

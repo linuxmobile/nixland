@@ -10,7 +10,6 @@
     fontconfig
 
     # utils
-    dijo
     du-dust
     duf
     fd
@@ -18,14 +17,14 @@
     jaq
     ripgrep
     killall
+    koji
+    jq
 
-    yt-dlp
-    cfspeedtest
-    onefetch
   ];
 
   programs = {
     eza.enable = true;
+    eza.enableZshIntegration = true;
     ssh.enable = true;
     dircolors = {
       enable = true;

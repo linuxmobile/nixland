@@ -9,22 +9,24 @@
       amberol
       blanket
       cavalier
-      celluloid
+      (celluloid.override {youtubeSupport = true;})
       contrast
+      easyeffects
       eyedropper
       gnome-solanum
+      halftone
       keypunch
       kooha
+      letterpress
       loupe
       muzika
       overskride
       paleta
       paper-plane
-      papers
+      (papers.override {supportNautilus = true;})
       parabolic
       planify
       resources
-      easyeffects
 
       # Terminal
       (blackbox-terminal.override {sixelSupport = true;})

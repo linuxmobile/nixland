@@ -50,6 +50,10 @@
       inputs.systems.follows = "systems";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
     helix.url = "github:helix-editor/helix";
 
     hm = {

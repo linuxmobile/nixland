@@ -15,7 +15,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "SF Pro Display";
+      name = "SF Pro";
       package = inputs.self.packages.${pkgs.system}.SF-Pro;
       size = 10;
     };
@@ -23,8 +23,11 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     iconTheme = {
-      name = "Colloid";
-      package = pkgs.colloid-icon-theme;
+      name = "WhiteSur";
+      package = (pkgs.whitesur-icon-theme. override {
+        boldPanelIcons = true;
+        alternativeIcons = true;
+      });
     };
 
     # theme = {

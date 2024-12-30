@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }: {
@@ -21,6 +22,7 @@
       nautilus-python
       nautilus-open-any-terminal
       wl-clipboard
+      inputs.ghostty.packages.${pkgs.system}.default
     ];
 
     gnome.excludePackages =
@@ -58,7 +60,9 @@
 
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
+    displayManager = {
+      gdm.enable = true;
+    };
     desktopManager.gnome = {
       enable = true;
       extraGSettingsOverridePackages = [
@@ -66,6 +70,9 @@
       ];
     };
   };
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "linuxmobile";
+
 
   xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gnome];
 

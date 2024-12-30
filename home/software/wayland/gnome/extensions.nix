@@ -1,18 +1,19 @@
 {pkgs, ...}: let
   defaultExtensions = with pkgs.gnomeExtensions; [
     appindicator
+    battery-health-charging
     battery-time-2
     blur-my-shell
+    clipboard-indicator
+    coverflow-alt-tab
     dash-to-dock
-    tiling-shell
-    user-themes
     light-style
     media-controls
-    tray-icons-reload
+    paperwm
     search-light
-    coverflow-alt-tab
+    top-bar-organizer
+    user-themes
     vitals
-    clipboard-indicator
   ];
 
   gnomeShellScheme = "org/gnome/shell/extensions";
