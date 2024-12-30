@@ -18,16 +18,19 @@
       kdePackages.sddm-kcm
       kdePackages.qt6ct
       kde-rounded-corners
+      utterly-nord-plasma
       inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+      inputs.ghostty.packages.${pkgs.system}.default
 
       # apps
       amberol
-      celluloid
+      cavalier
+      (celluloid.override {youtubeSupport = true;})
+      easyeffects
+      keypunch
       kooha
       loupe
       resources
-      cavalier
-      easyeffects
 
       wl-clipboard
     ];

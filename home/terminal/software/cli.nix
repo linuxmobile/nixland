@@ -14,14 +14,13 @@
     du-dust
     duf
     fd
+    jq
+    bc
     file
     jaq
     ripgrep
     killall
-
-    yt-dlp
-    cfspeedtest
-    onefetch
+    koji
   ];
 
   programs = {

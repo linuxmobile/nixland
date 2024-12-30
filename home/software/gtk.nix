@@ -23,14 +23,13 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
     iconTheme = {
-      name = "Colloid";
-      package = pkgs.colloid-icon-theme;
+      name = "WhiteSur";
+      package = pkgs.whitesur-icon-theme.override {
+        boldPanelIcons = true;
+        alternativeIcons = true;
+      };
     };
 
-    # theme = {
-    #   name = "adw-gtk3";
-    #   package = pkgs.adw-gtk3;
-    # };
     gtk3 = {
       bookmarks = [
         "file://${config.home.homeDirectory}/Documents"

@@ -9,23 +9,23 @@ stdenv.mkDerivation rec {
   version = "v3.0.0";
 
   src = fetchFromGitHub {
-    owner = "mosguinz";
-    repo = "SFMono-NerdFont";
-    rev = "master";
-    sha256 = "sha256-xgA33pFp7mNcwPaTUZMQI8Sy89jsDfVlL3Uvb6l53n0=";
+    owner = "shaunsingh";
+    repo = "SFMono-Nerd-Font-Ligaturized";
+    rev = "main";
+    sha256 = "sha256-AYjKrVLISsJWXN6Cj74wXmbJtREkFDYOCRw1t2nVH2w=";
   };
 
   nativeBuildInputs = [unzip];
 
   installPhase = ''
     mkdir -p $out/share/fonts/opentype
-    cp *.otf $out/share/fonts/opentype
+    cp *.otf $out/share/fonts/opentype/
   '';
 
   meta = with lib; {
-    description = "San Francisco Pro Font Mono";
-    homepage = "https://github.com/mosguinz/SFMono-NerdFont";
+    description = "Patched SF Mono fonts for programming";
+    homepage = "https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized";
     license = licenses.mit;
-    maintainers = [maintainers.mosguinz];
+    maintainers = [maintainers.IPconfig];
   };
 }

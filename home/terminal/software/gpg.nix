@@ -1,7 +1,6 @@
 {config, ...}: {
   programs.gpg = {
     enable = true;
-    enableZshIntegration = true;
     homedir = "${config.xdg.dataHome}/gnupg";
     settings = {
       use-agent = true;

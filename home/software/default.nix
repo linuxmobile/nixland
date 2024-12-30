@@ -28,13 +28,11 @@
     nodePackages.pnpm
     jq
     socat
-    catimg
+    # catimg
     bun
 
     scrcpy
 
-    burpsuite
-    xwayland-run
     mitmproxy
   ];
 }
