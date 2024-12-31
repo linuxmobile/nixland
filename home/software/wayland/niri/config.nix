@@ -52,6 +52,7 @@ in {
           scroll-method = "two-finger";
           tap = true;
           tap-button-map = "left-right-middle";
+          # scroll-factor = 0.1;
         };
         focus-follows-mouse.enable = true;
         warp-mouse-to-focus = true;
