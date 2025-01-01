@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }: let
@@ -12,35 +13,22 @@ in {
     enable = true;
     settings = {
       environment = {
-        QT_QPA_PLATFORM = "wayland";
-        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-        NIXOS_OZONE_WL = "1";
-        # test env
+        CLUTTER_BACKEND = "wayland";
         DISPLAY = ":0";
+        GDK_BACKEND = "wayland,x11";
+        MOZ_ENABLE_WAYLAND = "1";
+        NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+        SDL_VIDEODRIVER = "wayland";
       };
       spawn-at-startup = [
-        (makeCommand "/usr/libexec/polkit-gnome-authentication-agent-1")
-        # (makeCommand "hyprlock")
-        (makeCommand "systemctl --user start clight")
+        (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
+        (makeCommand "hyprlock")
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "swww-daemon")
         (makeCommand "eww open bar")
-        {
-          command = [
-            "${pkgs.dbus}/bin/dbus-update-activation-environment"
-            "--systemd"
-            "DISPLAY"
-            "WAYLAND_DISPLAY"
-            "SWAYSOCK"
-            "XDG_CURRENT_DESKTOP"
-            "XDG_SESSION_TYPE"
-            "NIXOS_OZONE_WL"
-            "XCURSOR_THEME"
-            "XCURSOR_SIZE"
-            "XDG_DATA_DIRS"
-          ];
-        }
       ];
       input = {
         keyboard.xkb.layout = "latam";
@@ -172,8 +160,12 @@ in {
         "Mod+Shift+Alt+S".action = screenshot-window;
         "Mod+Shift+S".action = screenshot;
         "Mod+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
-        "Mod+Return".action = spawn "${pkgs.foot}/bin/foot";
-        # "Ctrl+Alt+L".action = spawn "pgrep hyprlock || hyprlock";
+        "Mod+Return".action = spawn "${
+          inputs.ghostty.packages.${pkgs.system}.default
+        }/bin/ghostty";
+        "Ctrl+Alt+L".action = spawn "pgrep hyprlock || hyprlock";
+
+        "Mod+U".action = spawn "XDG_CURRENT_DESKTOP=gnome gnome-control-center";
 
         "Mod+Q".action = close-window;
         "Mod+S".action = switch-preset-column-width;

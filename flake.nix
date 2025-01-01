@@ -50,7 +50,7 @@
       inputs.systems.follows = "systems";
     };
 
-    anyrun.url = "github:anyrun-org/anyrun";
+    anyrun.url = "github:fufexan/anyrun/launch-prefix";
 
     ghostty = {
       url = "github:ghostty-org/ghostty";

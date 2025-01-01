@@ -7,6 +7,7 @@
     # services
     # ../../services/ags
     # ../../services/quickshell
+    ../../services/wayland/hypridle.nix
 
     # media services
     ../../services/media/playerctl.nix
