@@ -13,14 +13,14 @@ _: {
       background = [
         {
           monitor = "";
-          path = "~/Downloads/output.png";
+          path = "~/Downloads/WALLPAPERS/wallhaven-gpgyw3.jpg";
           blur_passes = 3;
-          blur_size = 10;
+          blur_size = 12;
           noise = "0.1";
-          contrast = "1.0";
-          brightness = "1.0";
+          contrast = "1.3";
+          brightness = "0.2";
           vibrancy = "0.5";
-          vibrancy_darkness = "0.1";
+          vibrancy_darkness = "0.3";
         }
       ];
 
@@ -56,27 +56,15 @@ _: {
       label = [
         {
           monitor = "";
-          text = "$TIME";
-          font_size = 150;
+          text = ''
+            cmd[update:1000] echo "<span font-weight='ultralight' >$(date +'%H %M %S')</span>"
+          '';
+          font_size = 300;
+          font_family = "SF Pro Text Ultralight";
+
           color = "rgb(b6c4ff)";
 
-          position = "0%, 30%";
-
-          valign = "center";
-          halign = "center";
-
-          shadow_color = "rgba(0, 0, 0, 0.1)";
-          shadow_size = 20;
-          shadow_passes = 2;
-          shadow_boost = 0.3;
-        }
-        {
-          monitor = "";
-          text = "cmd[update:3600000] date +'%a %b %d'";
-          font_size = 20;
-          color = "rgb(b6c4ff)";
-
-          position = "0%, 40%";
+          position = "0%, 2%";
 
           valign = "center";
           halign = "center";

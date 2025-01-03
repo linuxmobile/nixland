@@ -10,22 +10,22 @@
     # Mode;
     mode_normal = {
       fg = "black";
-      bg = "lightblue";
+      bg = "blue";
       bold = true;
     };
     mode_select = {
       fg = "black";
-      bg = "lightgreen";
+      bg = "green";
       bold = true;
     };
     mode_unset = {
       fg = "black";
-      bg = "lightmagenta";
+      bg = "magenta";
       bold = true;
     };
 
     # Progress;
-    progress_label = { bold = true; };
+    progress_label = {bold = true;};
     progress_normal = {
       fg = "blue";
       bg = "black";
@@ -36,10 +36,10 @@
     };
 
     # Permissions;
-    permissions_t = { fg = "blue"; };
-    permissions_r = { fg = "lightyellow"; };
-    permissions_w = { fg = "lightred"; };
-    permissions_x = { fg = "lightgreen"; };
-    permissions_s = { fg = "darkgray"; };
+    permissions_t = {fg = "blue";};
+    permissions_r = {fg = "yellow";};
+    permissions_w = {fg = "red";};
+    permissions_x = {fg = "green";};
+    permissions_s = {fg = "darkgray";};
   };
 }
