@@ -14,7 +14,6 @@
 
     # utils
     wl-clipboard
-    hyprpicker
   ];
 
   # make stuff work on wayland
