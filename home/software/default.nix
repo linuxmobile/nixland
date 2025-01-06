@@ -63,6 +63,7 @@
     scrcpy
 
     eww
+    evsieve
     dunst
     swww
     mitmproxy

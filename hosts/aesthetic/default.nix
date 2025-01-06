@@ -1,9 +1,15 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [./hardware-configuration.nix ./powersave.nix];
 
   boot = {
     # load modules on boot
-    kernelModules = ["amdgpu" "v4l2loopback"];
+    kernelModules = ["amdgpu" "v4l2loopback" "i2c-dev"];
+    kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
     extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
     kernelParams = [
       "amd_pstate=active"
@@ -22,5 +28,7 @@
   services = {
     # for SSD/NVME
     fstrim.enable = true;
+    scx.enable = true;
+    scx.scheduler = "scx_rusty";
   };
 }

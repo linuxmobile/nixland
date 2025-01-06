@@ -28,7 +28,7 @@ in {
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "swww-daemon")
-        (makeCommand "eww open bar")
+        (makeCommand "eww daemon & eww open bar")
       ];
       input = {
         keyboard.xkb.layout = "latam";

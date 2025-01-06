@@ -8,8 +8,6 @@
         Experimental = true;
         FastConnectable = true;
         powerOnBoot = true;
-        Class = "0x000100";
-        ControllerMode = "bredr";
         JustWorksRepairing = "always";
         Privacy = "device";
       };

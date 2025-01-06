@@ -52,6 +52,8 @@
 
     anyrun.url = "github:fufexan/anyrun/launch-prefix";
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
