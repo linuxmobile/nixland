@@ -22,7 +22,6 @@
         formatter = prettier e;
       });
       langs = ["css" "scss" "json" "html"];
-
     in
       [
         {
@@ -109,6 +108,22 @@
             "biome-lsp"
           ];
         }
+        {
+          name = "lua";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.stylua}/bin/stylua";
+            args = ["-"];
+          };
+          language-servers = ["lua-language-server"];
+        }
+        {
+          name = "nu";
+          language-servers = ["nushell-lsp"];
+          formatter = {
+            command = "${pkgs.nufmt}/bin/nufmt";
+          };
+        }
       ]
       ++ prettierLangs langs;
 
@@ -163,6 +178,42 @@
           provideFormatter = true;
           css.validate.enable = true;
           scss.validate.enable = true;
+        };
+      };
+      nushell-lsp = {
+        command = "${pkgs.nushell}/bin/nu";
+        args = ["--lsp"];
+      };
+
+      lua-language-server = {
+        command = "${pkgs.lua-language-server}/bin/lua-language-server";
+        config = {
+          runtime = {
+            version = "LuaJIT";
+            path = [
+              "?.lua"
+              "?/init.lua"
+            ];
+          };
+          diagnostics = {
+            globals = ["vim"]; # Useful if you're working with Neovim config
+          };
+          workspace = {
+            library = {};
+            maxPreload = 2000;
+            preloadFileSize = 1000;
+            checkThirdParty = false;
+          };
+          telemetry = {
+            enable = false;
+          };
+          format = {
+            enable = true;
+            defaultConfig = {
+              indent_style = "space";
+              indent_size = "2";
+            };
+          };
         };
       };
     };
