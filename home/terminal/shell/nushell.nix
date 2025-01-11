@@ -101,29 +101,7 @@
           nix search nixpkgs --json $term | from json | values | select pname description
         }
 
-        def homesearch [program: string] {
-          http get https://raw.githubusercontent.com/mipmip/home-manager-option-search/refs/heads/main/static/data/options-release-23.11.json
-          | get options
-          | where { |opt|
-            $opt.title =~ $program or ($opt.declarations | any { |decl| $decl.name =~ $program })
-          }
-          | each { |option|
-            let type_info = if ($option.type | is-empty) { "No type info" } else { $option.type }
-            let default_info = if ($option.default | is-empty) { "null" } else { $option.default }
-            let description = if ($option.description | is-empty) { "No description" } else { $option.description }
-
-            {
-              title: $option.title,
-              type: $type_info,
-              description: $description,
-              default: $default_info,
-              files: ($option.declarations | each { |d| $d.name } | str join ", ")
-            }
-          }
-        }
-
-
-        def --env fm [...args] {
+        def --env ff [...args] {
         	let tmp = (mktemp -t "yazi-cwd.XXXXX")
         	yazi ...$args --cwd-file $tmp
         	let cwd = (open $tmp)
