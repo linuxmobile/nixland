@@ -9,9 +9,7 @@
       plugins = with pkgs.nushellPlugins; [
         skim
         query
-        gstat
-        # dbus
-        polars
+        # gstat
         # highlight
       ];
 
@@ -68,7 +66,7 @@
       in ''
         $env.config = ${conf};
 
-        ${completions ["git" "nix" "man" "rg"]}
+        ${completions ["git" "nix" "man" "cargo" "curl" "rg"]}
 
         # use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/task.nu
         source ${pkgs.nu_scripts}/share/nu_scripts/modules/formats/from-env.nu
@@ -88,41 +86,21 @@
             cd $dir
           }
         }
-
-        def installed [] {
-          nix-store --query --requisites /run/current-system/ | parse --regex '.*?-(.*)' | get capture0 | sk
-        }
-
-        def installedall [] {
-          nix-store --query --requisites /run/current-system/ | sk | wl-copy
-        }
-
-        def search [term: string] {
-          nix search nixpkgs --json $term | from json | values | select pname description
-        }
-
-        def --env ff [...args] {
-        	let tmp = (mktemp -t "yazi-cwd.XXXXX")
-        	yazi ...$args --cwd-file $tmp
-        	let cwd = (open $tmp)
-        	if $cwd != "" and $cwd != $env.PWD {
-        		cd $cwd
-        	}
-        	rm -fp $tmp
-        }
       '';
 
       shellAliases = {
+        # installed = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq | sk";
+        installed = "nix-store --query --requisites /run/current-system | parse ''{hash}-{name}'' | get name | sort | uniq | sk";
+        installedall = "nix-store --query --requisites /run/current-system | sk";
         cleanup = "sudo nix-collect-garbage --delete-older-than 1d";
         listgen = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
         nixremove = "nix-store --gc";
         bloat = "nix path-info -Sh /run/current-system";
         c = "clear";
         q = "exit";
-        cleanram = "sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'";
+        # cleanram = "sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'";
         trimall = "sudo fstrim -va";
         temp = "cd /tmp/";
-        zed = "zeditor";
 
         test-build = "sudo nixos-rebuild test --flake .#aesthetic";
         switch-build = "sudo nixos-rebuild switch --flake .#aesthetic";
@@ -134,18 +112,24 @@
         push = "git push";
         pull = "git pull";
         diff = "git diff --staged";
-        gcld = "git clone --depth 1";
+        # gcld = "git clone --depth";
         gco = "git checkout";
-        gitgrep = "git ls-files | rg";
+        # gitgrep = "git ls-files | rg";
         # gitrm = "git ls-files --deleted -z | xargs -0 git rm";
 
-        # cat = "bat --theme=base16 --number --color=always --paging=never --tabs=2 --wrap=never";
-        fcd = "cd (fd --type d | sk | str trim)";
+        cat = "bat --theme=base16 --number --color=always --paging=never --tabs=2 --wrap=never";
+        cp = "cp -iv";
+        # du = "du-dust";
+        # fcd = "cd $(fd --type d | sk)";
+        fm = "yazi";
         grep = "rg";
         l = "eza -lF --time-style=long-iso --icons";
-        # la = "eza -lah --tree";
+        la = "eza -lah --tree";
         # ls = "eza -h --git --icons --color=auto --group-directories-first -s extension";
         ll = "eza -h --git --icons --color=auto --group-directories-first -s extension";
+        mv = "mv -iv";
+        ps = "procs";
+        rm = "rm -iv";
         tree = "eza --tree --icons --tree";
 
         # systemctl
