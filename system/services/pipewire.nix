@@ -28,7 +28,7 @@
           }
         '')
       ];
-      # extraConfig."wireplumber.profiles".main."monitor.libcamera" = "disabled";
+      extraConfig."wireplumber.profiles".main."monitor.libcamera" = "disabled";
     };
   };
 

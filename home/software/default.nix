@@ -57,6 +57,7 @@
     pwvucontrol
     resources
     gnome-control-center
+    newsflash
 
     # inkscape
     # gimp
