@@ -65,7 +65,6 @@
 
     eww
     evsieve
-    dunst
     swww
     mitmproxy
 
