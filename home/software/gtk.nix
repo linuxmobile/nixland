@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -24,16 +25,12 @@
 
     iconTheme = {
       name = "WhiteSur";
-      package = (pkgs.whitesur-icon-theme. override {
+      package = pkgs.whitesur-icon-theme.override {
         boldPanelIcons = true;
         alternativeIcons = true;
-      });
+      };
     };
 
-    # theme = {
-    #   name = "adw-gtk3";
-    #   package = pkgs.adw-gtk3;
-    # };
     gtk3 = {
       bookmarks = [
         "file://${config.home.homeDirectory}/Documents"
@@ -42,22 +39,7 @@
         "file://${config.home.homeDirectory}/Pictures"
         "file://${config.home.homeDirectory}/Videos"
       ];
-      extraConfig = {
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintfull";
-        gtk-xft-rgba = "rgb";
-        # gtk-application-prefer-dark-theme = 1;
-      };
     };
-
-    gtk2.extraConfig = ''
-      gtk-xft-antialias=1
-      gtk-xft-hinting=1
-      gtk-xft-hintstyle="hintslight"
-      gtk-xft-rgba="rgb"
-    '';
-
-    # gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
+  xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
 }

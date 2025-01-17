@@ -16,8 +16,7 @@
     vesktop
 
     ps_mem
-    nitch
-    maxfetch
+    fastfetch
 
     # misc
     pciutils
@@ -31,11 +30,10 @@
     nodePackages.pnpm
     jq
     socat
-    catimg
+    # catimg
     bun
 
     scrcpy
-    xwayland-run
-    burpsuite
+    mitmproxy
   ];
 }

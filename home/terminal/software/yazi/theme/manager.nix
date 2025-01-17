@@ -1,16 +1,16 @@
 {
   programs.yazi.theme.manager = {
-    cwd = { fg = "cyan"; };
+    cwd = {fg = "cyan";};
 
     # Hovered
     hovered = {
       fg = "black";
-      bg = "lightblue";
+      bg = "blue";
     };
 
     preview_hovered = {
       fg = "black";
-      bg = "lightblue";
+      bg = "blue";
     };
 
     # Find
@@ -26,22 +26,22 @@
 
     # Marker
     marker_selected = {
-      fg = "lightgreen";
-      # bg = "lightgreen";
+      fg = "green";
+      # bg = "green";
     };
     marker_copied = {
-      fg = "lightyellow";
-      # bg = "lightyellow";
+      fg = "yellow";
+      # bg = "yellow";
     };
     marker_cut = {
-      fg = "lightred";
-      # bg = "lightred";
+      fg = "red";
+      # bg = "red";
     };
 
     # Tab
     tab_active = {
       fg = "black";
-      bg = "lightblue";
+      bg = "blue";
     };
     tab_inactive = {
       fg = "white";
@@ -51,13 +51,13 @@
 
     # Border;
     border_symbol = "│";
-    border_style = { fg = "gray"; };
+    border_style = {fg = "gray";};
 
     # Offset;
-    folder_offset = [ 1 0 1 0 ];
-    preview_offset = [ 1 1 1 1 ];
+    folder_offset = [1 0 1 0];
+    preview_offset = [1 1 1 1];
 
-    # Highlighting;
+    # Highing;
     syntect_theme = "";
   };
 }

@@ -36,6 +36,7 @@
       keep-outputs = true;
 
       trusted-users = ["root" "@wheel"];
+      accept-flake-config = false;
     };
   };
 }

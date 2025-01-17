@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  browser = ["firefox"];
+  browser = ["zen"];
   imageViewer = ["org.gnome.Loupe"];
   videoPlayer = ["io.github.celluloid_player.Celluloid"];
   audioPlayer = ["io.bassi.Amberol"];
@@ -37,10 +37,13 @@
 
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) ({
-      "application/pdf" = ["papers"];
+      "application/pdf" = ["org.gnome.Papers"];
       "text/html" = browser;
       "text/plain" = ["org.gnome.TextEditor"];
-      "x-scheme-handler/chrome" = ["chromium-browser"];
+      "inode/directory" = ["yazi"];
+      # Full entry is org.telegram.desktop.desktop
+      "x-scheme-handler/tg" = ["org.telegram.desktop"];
+      "x-scheme-handler/tonsite" = ["org.telegram.desktop"];
     }
     // image
     // video

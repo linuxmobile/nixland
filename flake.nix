@@ -50,6 +50,8 @@
       inputs.systems.follows = "systems";
     };
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };

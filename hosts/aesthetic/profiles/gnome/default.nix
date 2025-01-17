@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }: {
@@ -14,6 +13,7 @@
     ];
 
     systemPackages = with pkgs; [
+      gnome-text-editor
       ffmpegthumbnailer
       adwaita-icon-theme
       dconf-editor
@@ -22,7 +22,6 @@
       nautilus-python
       nautilus-open-any-terminal
       wl-clipboard
-      inputs.ghostty.packages.${pkgs.system}.default
     ];
 
     gnome.excludePackages =
@@ -32,7 +31,6 @@
         gnome-connections
         gnome-photos
         gnome-tour
-        nano
         snapshot
         cheese # webcam tool
         epiphany # web browser
@@ -63,6 +61,7 @@
     displayManager = {
       gdm.enable = true;
     };
+    desktopManager.xterm.enable = false;
     desktopManager.gnome = {
       enable = true;
       extraGSettingsOverridePackages = [
@@ -73,7 +72,6 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "linuxmobile";
 
-
   xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gnome];
 
   services.udev.packages = with pkgs; [gnome-settings-daemon];
@@ -83,7 +81,7 @@
       {
         settings = {
           "org/gnome/mutter".experimental-features = ["scale-monitor-framebuffer"];
-          "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
+          # "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
           "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
         };
       }

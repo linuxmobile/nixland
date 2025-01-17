@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./dconf.nix
     ./extensions.nix
@@ -27,10 +31,13 @@
       parabolic
       planify
       resources
+      newsflash
 
       # Terminal
       (blackbox-terminal.override {sixelSupport = true;})
       lsix
+
+      inputs.ghostty.packages.${pkgs.system}.default
     ];
   };
 }

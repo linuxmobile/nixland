@@ -13,15 +13,13 @@
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
-      roboto
 
       inputs.self.packages.${pkgs.system}.SF-Pro
       inputs.self.packages.${pkgs.system}.SF-Pro-mono
 
       # nerdfonts
-      nerd-fonts.zed-mono
-      nerd-fonts.fira-code
       nerd-fonts.symbols-only
+      nerd-fonts.geist-mono
     ];
 
     # causes more issues than it solves
@@ -47,9 +45,9 @@
         addAll = builtins.mapAttrs (_: v: ["Symbols Nerd Font"] ++ v ++ ["Noto Color Emoji"]);
       in
         addAll {
-          serif = ["Libertinus Serif"];
+          serif = ["Noto Sans Serif"];
           sansSerif = ["SF Pro"];
-          monospace = ["ZedMono Nerd Font"];
+          monospace = ["PragmataPro Mono Liga"];
           emoji = [];
         };
     };

@@ -1,24 +1,30 @@
-{pkgs, ...}: let
-  defaultExtensions = with pkgs.gnomeExtensions; [
+{ pkgs, ... }: let
+  overlays = [
+    (import ../../../../modules/gnome-extension-manager.nix)
+  ];
+
+
+  pkgsWithOverlays = import pkgs.path {
+    inherit overlays;
+    config = pkgs.config;
+    system = pkgs.system;
+  };
+
+  defaultExtensions = with pkgsWithOverlays.gnomeExtensions; [
     appindicator
-    battery-health-charging
+    # battery-health-charging
     battery-time-2
     blur-my-shell
-    clipboard-indicator
-    coverflow-alt-tab
     dash-to-dock
     light-style
     media-controls
-    paperwm
-    search-light
-    top-bar-organizer
     user-themes
     vitals
   ];
 
   gnomeShellScheme = "org/gnome/shell/extensions";
 in {
-  home.packages = with pkgs;
+  home.packages = with pkgsWithOverlays;
     [
       gnome-extension-manager
       dart-sass
@@ -73,7 +79,7 @@ in {
       memory-measurement = 1;
       menu-centered = false;
       network-speed-format = 0;
-      position-in-panel = 1;
+      position-in-panel = 2;
       show-fan = false;
       show-network = true;
       show-storage = false;

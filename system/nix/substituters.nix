@@ -3,6 +3,9 @@
     substituters = [
       # high priority since it's almost always used
       "https://cache.nixos.org?priority=10"
+
+      "https://chaotic-nyx.cachix.org/"
+      "https://cosmic.cachix.org/"
       "https://fufexan.cachix.org"
       "https://ghostty.cachix.org"
       "https://helix.cachix.org"
@@ -12,6 +15,9 @@
 
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
       "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
