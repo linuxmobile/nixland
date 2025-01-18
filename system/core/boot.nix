@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   boot = {
     bootspec.enable = true;
 
@@ -15,6 +19,7 @@
       "quiet"
       "systemd.show_status=auto"
       "rd.udev.log_level=3"
+      "plymouth.use-simpledrm"
     ];
 
     loader = {
@@ -27,4 +32,5 @@
 
     tmp.cleanOnBoot = true;
   };
+  environment.systemPackages = [config.boot.kernelPackages.cpupower];
 }

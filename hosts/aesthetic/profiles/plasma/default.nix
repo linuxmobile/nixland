@@ -31,6 +31,9 @@
       kooha
       loupe
       resources
+      halftone
+      letterpress
+      newsflash
 
       wl-clipboard
     ];

@@ -22,7 +22,6 @@
         formatter = prettier e;
       });
       langs = ["css" "scss" "json" "html"];
-
     in
       [
         {
@@ -109,6 +108,13 @@
             "biome-lsp"
           ];
         }
+        {
+          name = "nu";
+          language-servers = ["nushell-lsp"];
+          formatter = {
+            command = "${pkgs.nufmt}/bin/nufmt";
+          };
+        }
       ]
       ++ prettierLangs langs;
 
@@ -165,6 +171,11 @@
           scss.validate.enable = true;
         };
       };
+      nushell-lsp = {
+        command = "${pkgs.nushell}/bin/nu";
+        args = ["--lsp"];
+      };
+
     };
   };
 }

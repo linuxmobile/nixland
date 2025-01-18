@@ -8,8 +8,4 @@
     typescript-language-server
     zed-editor
   ];
-
-  programs.zsh.shellAliases = {
-    zed = "zeditor";
-  };
 }

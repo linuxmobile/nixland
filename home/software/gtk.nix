@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -15,7 +16,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "SF Pro Display";
+      name = "SF Pro";
       package = inputs.self.packages.${pkgs.system}.SF-Pro;
       size = 10;
     };
@@ -38,22 +39,7 @@
         "file://${config.home.homeDirectory}/Pictures"
         "file://${config.home.homeDirectory}/Videos"
       ];
-      extraConfig = {
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintfull";
-        gtk-xft-rgba = "rgb";
-        # gtk-application-prefer-dark-theme = 1;
-      };
     };
-
-    gtk2.extraConfig = ''
-      gtk-xft-antialias=1
-      gtk-xft-hinting=1
-      gtk-xft-hintstyle="hintslight"
-      gtk-xft-rgba="rgb"
-    '';
-
-    # gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
+  xdg.configFile."gtk-4.0/gtk.css".enable = lib.mkForce false;
 }

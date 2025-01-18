@@ -17,6 +17,6 @@
     ../../services/system/auto-theme.nix
 
     # terminal emulators
-    ../../terminal/emulators/foot.nix
+    # ../../terminal/emulators/foot.nix
   ];
 }
