@@ -24,7 +24,6 @@
       letterpress
       loupe
       muzika
-      overskride
       paleta
       paper-plane
       (papers.override {supportNautilus = true;})
